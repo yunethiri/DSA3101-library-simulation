@@ -1,0 +1,75 @@
+version: "3"
+
+services:
+  web:
+    build: 
+      context: ./dash
+      dockerfile: main_Dockerfile
+    ports: 
+       - "8050:8050"
+    depends_on: 
+       - model
+    container_name: main_page
+    networks:
+       - custom_network
+
+  history_page:
+    build: 
+      context: ./dash
+      dockerfile: compare_Dockerfile
+    ports: 
+       - "8052:8052"
+    depends_on: 
+       - model
+       - endpoints
+    volumes: 
+    - type: bind
+      source: ./library_model/results
+      target: /app/results
+    container_name: history_page
+    networks:
+       - custom_network
+
+  floor_plan:
+    build: 
+      context: ./dash
+      dockerfile: floorplan_Dockerfile
+    ports: 
+       - "8051:8051"
+    container_name: floor_plan
+    networks:
+       - custom_network
+       
+  model:
+    build:
+      context: ./library_model
+      dockerfile: model_Dockerfile
+    ports:
+      - "8519:8519"
+    container_name: model
+    networks:
+      - custom_network
+    volumes: 
+    - type: bind
+      source: ./library_model/results
+      target: /app/results
+
+  endpoints:
+    build:
+      context: ./library_model
+      dockerfile: flask_Dockerfile
+    expose:
+     - "8520"
+    ports:
+      - "8520:8520"
+    container_name: endpoints
+    networks:
+      - custom_network
+    volumes: 
+    - type: bind
+      source: ./library_model/results
+      target: /app/results
+
+networks:
+  custom_network:
+    driver: bridge
