@@ -6,7 +6,7 @@ This project aims to optimize resource usage in the NUS Central Library by simul
 
 Users have the flexibility to adjust various parameters, such as the length of stay, number of seats on a level, exam season, overall number of users in the library, and the specific library level.
 
-More information of the project is found in Technical_Handover_Documentation.pdf.
+More information of the project is found in `Technical_Handover_Documentation.pdf`.
 
 ## Running the Model
 
