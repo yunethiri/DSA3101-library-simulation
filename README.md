@@ -2,9 +2,7 @@
 
 ## Overview
 
-This DSA3101 Project aims to optimize resource usage in the library by simulating occupancy across different levels. 
-
-The project utilizes a Mesa agent-based model, where library users are assigned attributes and behaviors to simulate movements within the library. 
+This project aims to optimize resource usage in the NUS Central Library by simulating occupancy across different levels. The project utilizes a Mesa agent-based model, where library users are assigned attributes and behaviors to simulate movements within the library. 
 
 Users have the flexibility to adjust various parameters, such as the length of stay, number of seats on a level, exam season, overall number of users in the library, and the specific library level.
 
@@ -20,13 +18,12 @@ docker-compose up -d
 
 #### Access the Model:
 
-Visit http://localhost:8050 in your web browser.
+Visit `http://localhost:8050` in your web browser.
 
-## Intepreting the Model
-When area is shaded red, it means that area is full (maxed occupancy has been reached). 
-When the number of seats in the area is set to 0, the area is also shaded red. 
-
-When library users (agents represented by dots) are red, seat is hogged.
+## Interpreting the Model 
+- Red-Shaded Areas: Indicates full occupancy (maximum capacity reached). If the number of seats in an area is set to 0, the area will also be shaded red.
+  
+- Red Agents: When library users (agents represented by dots) are red, seat is occupied.
 
 ## Model Parameters
 
@@ -45,7 +42,7 @@ FPS determines the simulation speed, with each step representing 30 minutes.
 
 ## Model Output
 
-Results of the simulation are updated in real time under library_model/results/results_one_run.csv. 
+Results of the simulation are updated in real time and saved in `library_model/results/results_one_run.csv`.
 
 Two key metrics are provided:
 
